@@ -6,7 +6,7 @@
 % phase_image 512x512 0 - 2PI
 % wavelength in nm
 % returns 16bit uint16 image
-function Image_new=apply_lut(phase_image, wavelength)
+function Image_new=ApplyLUT(phase_image, wavelength)
     pkg load mapping
     
     % LUT_location is the where the regional LUT is saved

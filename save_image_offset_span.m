@@ -1,4 +1,5 @@
 %offsets and spans - 16 bit integers...
+%phase in radians
 
 function save_image_offset_span(phase, offsets, spans, file_name_prefix)
     
