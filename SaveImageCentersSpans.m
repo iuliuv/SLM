@@ -3,7 +3,7 @@
 
 function SaveImageCentersSpans(phase, Centers, spans, file_name_prefix)
     
-  pkg load mapping;
+  
   phase = wrapTo2Pi(phase);
   for iCenter = Centers
     for iSpan = spans

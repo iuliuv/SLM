@@ -2,6 +2,7 @@ clear all
 
 pkg load image
 pkg load communications
+pkg load mapping
 
 imsize     = 512;
 wavelength = 700;
@@ -44,7 +45,7 @@ for x=sx-ss/2:sx+ss/2-1
   %aa(x,sy-ss:sy+ss-1) = ones(1, ss*2);
 end
 
-a = imread('image.bmp');
+a = imread('images\hello.bmp');
 a = double(a); 
 %a = [ a fliplr(a) ; fliplr(a) a ];
 %a(1:128, 1:128) = zeros(128);
@@ -93,6 +94,8 @@ for i=1:iterations
   r = fft2(light*mean(mean(abs(f))).*exp(1i*angle(f)));
   angle_w_noise = angle(f);
   angle_w_noise = wrapTo2Pi(angle_w_noise);
+  %angle_w_noise = SLMCompensation(angle_w_noise);
+  angle_w_noise = angle_w_noise/2;
   intensity_w_noise = light*mean(mean(abs(f)));
   %angle_w_noise(1:256,:) = -angle_w_noise(257:512,:);
   %angle_w_noise(1:256, :) = zeros(256, imsize);
@@ -120,13 +123,13 @@ for i=1:iterations
   imagesc(ifftshift(r_abs));
   axis equal;
   colorbar;
-  title(sprintf('Expected image, iterations: %2.0f, contrast:%4.2f', i, im_contrast(r_abs, a)));
+  title(sprintf('Expected image, iterations: %2.0f, contrast:%4.2f', i, ImageContrast(r_abs, a)));
   
   subplot(2,3,6);
   im_noise_abs=abs(im_noise);
   imagesc(ifftshift(im_noise_abs));
   axis equal;
-  title(sprintf('Expected image including sensor noise, contrast:%4.2f', im_contrast(im_noise_abs, a)));
+  title(sprintf('Expected image including sensor noise, contrast:%4.2f', ImageContrast(im_noise_abs, a)));
   colorbar;
 
   drawnow
@@ -136,7 +139,7 @@ for i=1:iterations
 end
 
 
-save_image_offset_span(phase, 0:500:3000, 6000:1000:15000, 't3'); 
+SaveImageCentersSpans(phase, 5000:5000:50000, 5000:5000:40000, 'holograms\t1'); 
 
 %phase(1:256,:) = zeros(256,imsize);
 %imwrite(apply_lut(phase, wavelength), ['out_lut_' num2str(700) '.tiff'], 'tiff');
