@@ -139,7 +139,8 @@ for i=1:iterations
 end
 
 
-SaveImageCentersSpans(phase, 5000:5000:50000, 5000:5000:40000, 'holograms\t1'); 
+SaveImageCentersSpans(phase, 32767, 65534, 'holograms\hello_linear'); 
+SaveImageLocalLUT(phase, 1064, 'holograms\hello_local_lut');
 
 %phase(1:256,:) = zeros(256,imsize);
 %imwrite(apply_lut(phase, wavelength), ['out_lut_' num2str(700) '.tiff'], 'tiff');
