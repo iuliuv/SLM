@@ -9,7 +9,7 @@ function SaveImageCentersSpans(phase, Centers, spans, file_name_prefix)
     for iSpan = spans
         phase_im = uint16(mod(iCenter - iSpan/2 + iSpan*phase/2/pi, 2^16));
         imwrite(phase_im, 
-          [file_name_prefix '_center' sprintf('%05i', iCenter) '_spn' sprintf('%05i', iSpan) '.tif'],
+          [file_name_prefix '_center' sprintf('%05i', iCenter) '_spn' sprintf('%05i', iSpan) '.tiff'],
           'tiff');
     end
   end  

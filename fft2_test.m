@@ -138,8 +138,12 @@ for i=1:iterations
   
 end
 
+SaveImageCentersSpans(phase, 50000, 23000:1000:30000, 'holograms\t1'); 
+SaveImageCentersSpans(ScaleTo2Pi(SLMCompensation(phase, 0.36, 0.56)), 
+                       50000, 23000:1000:30000, 'holograms\t2'); 
+SaveImageCentersSpans(ScaleTo2Pi(SLMCompensation(phase, 0.2, 0.3)), 
+                       50000, 23000:1000:30000, 'holograms\t3'); 
 
-SaveImageCentersSpans(phase, 5000:5000:50000, 5000:5000:40000, 'holograms\t1'); 
-
+                       
 %phase(1:256,:) = zeros(256,imsize);
 %imwrite(apply_lut(phase, wavelength), ['out_lut_' num2str(700) '.tiff'], 'tiff');
