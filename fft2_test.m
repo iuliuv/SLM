@@ -138,6 +138,12 @@ for i=1:iterations
   
 end
 
+%SaveImageCentersSpans(phase, 50000, 23000:1000:30000, 'holograms\t1'); 
+%SaveImageCentersSpans(ScaleTo2Pi(SLMCompensation(phase, 0.36, 0.56)), 
+%                       50000, 23000:1000:30000, 'holograms\t2'); 
+%SaveImageCentersSpans(ScaleTo2Pi(SLMCompensation(phase, 0.2, 0.3)), 
+%                       50000, 23000:1000:30000, 'holograms\t3'); 
+
 
 SaveImageCentersSpans(phase, 32767, 65534, 'holograms\hello_linear'); 
 SaveImageLocalLUT(phase, 1064, 'holograms\hello_local_lut');
