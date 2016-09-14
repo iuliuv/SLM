@@ -146,7 +146,8 @@ SaveImageCentersSpans(ScaleTo2Pi(SLMCompensation(phase, 0.2, 0.3)),
 
 
 SaveImageCentersSpans(phase, 32767, 65534, 'holograms\hello_linear'); 
-SaveImageLocalLUT(phase, 1064, 'holograms\hello_local_lut');
+SaveImageLocalLUT(phase, 1064, 'holograms\hello');
+SaveImageLocalLUT(phase, 700, 'holograms\hello');
 
 %phase(1:256,:) = zeros(256,imsize);
 %imwrite(apply_lut(phase, wavelength), ['out_lut_' num2str(700) '.tiff'], 'tiff');
