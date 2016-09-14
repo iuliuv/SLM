@@ -141,6 +141,10 @@ end
 SaveImageCentersSpans(phase, 50000, 30000, 'holograms\linear'); 
 SaveImageCentersSpans(SaturateTo2Pi(SLMCompensation(phase, 0.2, 0.3)), 
                        50000, 20000:2000:30000, 'holograms\saturate'); 
+SaveImageLocalLUT(SaturateTo2Pi(SLMCompensation(phase, 0.2, 0.3)), 
+                       700, 'holograms\saturate'); 
+SaveImageLocalLUT(SaturateTo2Pi(SLMCompensation(phase, 0.2, 0.3)), 
+                       1064, 'holograms\saturate');
 SaveImageCentersSpans(ScaleTo2Pi(SLMCompensation(phase, 0.2, 0.3)), 
                        50000, 30000, 'holograms\scale'); 
 
