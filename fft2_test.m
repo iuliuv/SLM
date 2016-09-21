@@ -45,8 +45,13 @@ for x=sx-ss/2:sx+ss/2-1
   %aa(x,sy-ss:sy+ss-1) = ones(1, ss*2);
 end
 
-a = imread('images\hello.bmp');
+a = imread('images\love.bmp');
 a = double(a); 
+a = fliplr(a);
+a = flipud(a);
+
+a = ones(imsize);
+
 %a = [ a fliplr(a) ; fliplr(a) a ];
 %a(1:128, 1:128) = zeros(128);
 %a(1:128, 385:512) = zeros(128);
@@ -138,20 +143,29 @@ for i=1:iterations
   
 end
 
-SaveImageCentersSpans(phase, 50000, 30000, 'holograms\linear'); 
-SaveImageCentersSpans(SaturateTo2Pi(SLMCompensation(phase, 0.2, 0.3)), 
-                       50000, 20000:2000:30000, 'holograms\saturate'); 
+dir = 'uni';
+
+%SaveImageCentersSpans(phase, 50000, 30000, [dir '\linear']); 
+%SaveImageCentersSpans(SaturateTo2Pi(SLMCompensation(phase, 0.2, 0.3)), 
+%                       50000, 20000:2000:30000, [dir '\saturate']); 
 SaveImageLocalLUT(SaturateTo2Pi(SLMCompensation(phase, 0.2, 0.3)), 
-                       700, 'holograms\saturate'); 
+                       700, [dir '\sat_uni' ]); 
 SaveImageLocalLUT(SaturateTo2Pi(SLMCompensation(phase, 0.2, 0.3)), 
-                       1064, 'holograms\saturate');
-SaveImageCentersSpans(ScaleTo2Pi(SLMCompensation(phase, 0.2, 0.3)), 
-                       50000, 30000, 'holograms\scale'); 
+                       1064, [dir '\sat_uni']);
+
+                       % SaveImageCentersSpans(ScaleTo2Pi(SLMCompensation(phase, 0.2, 0.3)), 
+%      50000, 30000, [dir '\scale']); 
+
+%for Shift = 0:0.1:(4*pi)      
+%  SaveImageCentersSpans(SaturateTo2Pi(Shift+SLMCompensation(phase, 0.2, 0.3)), 
+%                        50000, 30000, [dir '\sat_shift_' sprintf('%3.1f', Shift)]); 
+%end
 
 
-SaveImageCentersSpans(phase, 32767, 65534, 'holograms\hello_linear'); 
-SaveImageLocalLUT(phase, 1064, 'holograms\hello');
-SaveImageLocalLUT(phase, 700, 'holograms\hello');
+
+%SaveImageCentersSpans(phase, 32767, 65534, [dir '\linear']); 
+%SaveImageLocalLUT(phase, 1064, [dir '\lut']);
+%SaveImageLocalLUT(phase, 700, [dir '\lut']);
 
 %phase(1:256,:) = zeros(256,imsize);
 %imwrite(apply_lut(phase, wavelength), ['out_lut_' num2str(700) '.tiff'], 'tiff');
