@@ -50,7 +50,7 @@ a = double(a);
 a = fliplr(a);
 a = flipud(a);
 
-a = ones(imsize);
+%a = ones(imsize);
 
 %a = [ a fliplr(a) ; fliplr(a) a ];
 %a(1:128, 1:128) = zeros(128);
