@@ -15,9 +15,9 @@ function test1(fig)
      [ 1 0 0 ; 0 1 0 ; ui.dx -ui.dy 1];
   
   T1 = maketform('affine', trmat);
-  tr_img = imtransform(slm_ccd, T1, 
-     'VData', [-Pos(1) Pos(1)], 'UData', [-Pos(2), Pos(2)], 
-     'YData', [-Pos(1)*2 Pos(1)*2], 'XData', [-Pos(2)*2, Pos(2)*2],
+  tr_img = imtransform(slm_ccd, T1, ...
+     'VData', [-Pos(1) Pos(1)], 'UData', [-Pos(2), Pos(2)], ...
+     'YData', [-Pos(1)*2 Pos(1)*2], 'XData', [-Pos(2)*2, Pos(2)*2], ...
      'FillValues', 0);
   
   subplot(H);
@@ -50,9 +50,9 @@ slm_ccd = contrast(imread('registration\slm love.tif'));
 Pos = (size(dmd_ccd)-1)/2;
 trmat = [1 0 0 ; 0 1 0 ; 0 0 1];
 T1 = maketform('affine', trmat);
-dmd_ccd = imtransform(dmd_ccd, T1, 
-     'VData', [-Pos(1) Pos(1)], 'UData', [-Pos(2), Pos(2)], 
-     'YData', [-Pos(1)*2 Pos(1)*2], 'XData', [-Pos(2)*2, Pos(2)*2],
+dmd_ccd = imtransform(dmd_ccd, T1, ...
+     'VData', [-Pos(1) Pos(1)], 'UData', [-Pos(2), Pos(2)], ... 
+     'YData', [-Pos(1)*2 Pos(1)*2], 'XData', [-Pos(2)*2, Pos(2)*2], ...
      'FillValues', 0);
 
 
